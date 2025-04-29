@@ -1,0 +1,15 @@
+﻿@using KendoFormDatePicker.Models
+@model KendoFormDatePicker.Models.IndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<p>Date of birth is: @Model.DateOfBirth.ToLongDateString()</p>
+
+@(Html.Kendo().Form<IndexViewModel>()
+    .Name("MyForm")
+    .Items(f =>
+    {
+        f.Add().Field(m => m.DateOfBirth).Label("Date of birth").Editor(b => b.DatePicker());
+    })
+)
