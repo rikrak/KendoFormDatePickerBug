@@ -4,12 +4,14 @@
     ViewBag.Title = "Home Page";
 }
 
-<p>Date of birth is: @Model.DateOfBirth.ToLongDateString()</p>
+<p>Date of birth (local) is: @Model.DateOfBirthLocal.ToLongDateString() (@Model.DateOfBirthLocal.Kind)</p>
+<p>Date of birth (UTC) is: @Model.DateOfBirthUtc.ToLongDateString() (@Model.DateOfBirthUtc.Kind)</p>
 
 @(Html.Kendo().Form<IndexViewModel>()
     .Name("MyForm")
     .Items(f =>
     {
-        f.Add().Field(m => m.DateOfBirth).Label("Date of birth").Editor(b => b.DatePicker());
+        f.Add().Field(m => m.DateOfBirthLocal).Label("Local date of birth").Editor(b => b.DatePicker());
+        f.Add().Field(m => m.DateOfBirthUtc).Label("UTC date of birth").Editor(b => b.DatePicker());
     })
 )
